@@ -12,5 +12,6 @@ public interface EmployeeServiceInterface {
     public Employee getEmployee( long id);
     public Employee addEmployee(String name,String salary);
     ResponseEntity<String> deleteEmployee(long id);
+    Employee updateEmployeeSalary(Long id, String salary);
 
 }
