@@ -25,10 +25,7 @@ public class EmployeeRestController {
     public Employee addEmployee(@RequestBody Employee employee) {
         return employeeRepository.save(employee);
     }
-    @PutMapping("/add")
-    public Employee updateEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
-    }
+    
     @DeleteMapping("/{id}")
      public void deleteEmployee(@PathVariable long id) {
         employeeRepository.deleteById(id);
