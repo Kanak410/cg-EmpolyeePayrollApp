@@ -36,15 +36,17 @@ public class EmployeeService implements EmployeeServiceInterface {
     }
 
     @Override
-    public Employee updateEmployeeSalary(Long id, String salary){
+    public Employee updateEmployeeSalary(Long id,String name, String salary){
         Employee employee = employeeRepository.findById(id).get();
         if(employeeRepository.existsById(id)){
             employee.setSalary(salary);
+            employee.setName(name);
             return employeeRepository.save(employee);
         }
         return null;
 
     }
+
 
 
 }

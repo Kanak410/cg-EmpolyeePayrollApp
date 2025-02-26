@@ -2,6 +2,7 @@ package com.bridgelabz.kanak.cgemployeepayrollapp.controller;
 
 import com.bridgelabz.kanak.cgemployeepayrollapp.dto.Employee;
 import com.bridgelabz.kanak.cgemployeepayrollapp.repository.EmployeeRepository;
+import com.bridgelabz.kanak.cgemployeepayrollapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,25 +12,31 @@ import java.util.List;
 @RequestMapping("/emplo")
 public class EmployeeRestController {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService;
     @GetMapping()
     public List<Employee> employee() {
-        return employeeRepository.findAll();
+        return employeeService.getEmployees();
     }
     @GetMapping("/{id}")
     public Employee employeeById(@PathVariable long id) {
-        return employeeRepository.findById(id).orElse(null);
+        return employeeService.getEmployee(id);
 
     }
     @PostMapping("/add")
     public Employee addEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+        return employeeService.addEmployee(employee.getName(), employee.getSalary());
     }
     
     @DeleteMapping("/{id}")
      public void deleteEmployee(@PathVariable long id) {
-        employeeRepository.deleteById(id);
+        employeeService.deleteEmployee(id);
     }
+    @PutMapping("/update/{id}")
+    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+       return employeeService.updateEmployeeSalary(id,employee.getName(), employee.getSalary());
+
+    }
+
 
 
 
