@@ -3,6 +3,7 @@ package com.bridgelabz.kanak.cgemployeepayrollapp.controller;
 import com.bridgelabz.kanak.cgemployeepayrollapp.dto.Employee;
 import com.bridgelabz.kanak.cgemployeepayrollapp.repository.EmployeeRepository;
 import com.bridgelabz.kanak.cgemployeepayrollapp.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class EmployeeRestController {
 
     }
     @PostMapping("/add")
-    public Employee addEmployee(@RequestBody Employee employee) {
+    public Employee addEmployee(@Valid @RequestBody Employee employee) {
         log.info("Add employee");
         return employeeService.addEmployee(employee.getName(), employee.getSalary());
     }
@@ -37,7 +38,7 @@ public class EmployeeRestController {
         employeeService.deleteEmployee(id);
     }
     @PutMapping("/update/{id}")
-    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+    public Employee updateEmployee(@PathVariable Long id, @Valid @RequestBody Employee employee) {
         log.info("Update employee");
        return employeeService.updateEmployeeSalary(id,employee.getName(), employee.getSalary());
 
