@@ -16,24 +16,29 @@ public class EmployeeRestController {
     private EmployeeService employeeService;
     @GetMapping()
     public List<Employee> employee() {
+        log.info("Get employee list");
         return employeeService.getEmployees();
     }
     @GetMapping("/{id}")
     public Employee employeeById(@PathVariable long id) {
+        log.info("Get employee by id");
         return employeeService.getEmployee(id);
 
     }
     @PostMapping("/add")
     public Employee addEmployee(@RequestBody Employee employee) {
+        log.info("Add employee");
         return employeeService.addEmployee(employee.getName(), employee.getSalary());
     }
     
     @DeleteMapping("/{id}")
      public void deleteEmployee(@PathVariable long id) {
+        log.info("Delete employee");
         employeeService.deleteEmployee(id);
     }
     @PutMapping("/update/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        log.info("Update employee");
        return employeeService.updateEmployeeSalary(id,employee.getName(), employee.getSalary());
 
     }
