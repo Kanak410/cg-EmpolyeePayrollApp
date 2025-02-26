@@ -3,11 +3,12 @@ package com.bridgelabz.kanak.cgemployeepayrollapp.controller;
 import com.bridgelabz.kanak.cgemployeepayrollapp.dto.Employee;
 import com.bridgelabz.kanak.cgemployeepayrollapp.repository.EmployeeRepository;
 import com.bridgelabz.kanak.cgemployeepayrollapp.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/emplo")
 public class EmployeeRestController {
