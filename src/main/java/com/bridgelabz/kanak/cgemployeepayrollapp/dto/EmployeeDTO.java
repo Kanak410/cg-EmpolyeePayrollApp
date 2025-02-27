@@ -1,6 +1,5 @@
 package com.bridgelabz.kanak.cgemployeepayrollapp.dto;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,10 +9,12 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+import java.time.LocalDate;
+
+
 @Data
 @NoArgsConstructor
-public class Employee {
+public class EmployeeDTO {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,37 +26,12 @@ public class Employee {
     @Pattern(regexp = "^[A-Za-z ]+$",message = "Only alphabets and space allowed")
     private String name;
     private String salary;
+    private String gender;
+    private String profilePic;
+    private String note;
+    private LocalDate startDate;
 
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getSalary() {
-//        return salary;
-//    }
-//
-//    public void setSalary(String salary) {
-//        this.salary = salary;
-//    }
-//
-//    public Employee() {
-//    }
-//
-    public Employee(String name, String salary) {
-        this.name = name;
-        this.salary = salary;
-    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
+
+
 
 }
