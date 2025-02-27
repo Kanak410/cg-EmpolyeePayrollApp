@@ -21,7 +21,7 @@ public class EmployeeRestController {
         return employeeService.getEmployees();
     }
     @GetMapping("/{id}")
-    public Employee employeeById(@PathVariable long id) {
+    public Employee employeeById(@PathVariable @Valid long id) {
         log.info("Get employee by id");
         return employeeService.getEmployee(id);
 
