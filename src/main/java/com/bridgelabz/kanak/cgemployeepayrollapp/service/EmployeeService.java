@@ -48,7 +48,7 @@ public class EmployeeService implements EmployeeServiceInterface {
     }
 
     @Override
-    public ResponseEntity<?> updateEmployeeSalary(Long id, EmployeeDTO employeeDTO) {
+    public ResponseEntity<?> updateEmployeeSalary(long id, EmployeeDTO employeeDTO) {
         EmployeePayrollData empData = employeeRepository.findById(id).get();
         if(employeeRepository.existsById(id)){
             empData.setSalary(employeeDTO.getSalary());

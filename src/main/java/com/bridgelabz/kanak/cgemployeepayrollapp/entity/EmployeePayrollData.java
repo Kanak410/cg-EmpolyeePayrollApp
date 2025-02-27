@@ -14,7 +14,7 @@ public class EmployeePayrollData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="EmployeeID")
-    private int id;
+    private long id;
     @Column(name="EmployeeName")
     private String name;
     private String salary;
