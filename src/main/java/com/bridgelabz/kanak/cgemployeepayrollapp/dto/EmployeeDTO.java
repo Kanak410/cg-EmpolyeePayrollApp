@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.*;
 
 import java.time.LocalDate;
 
@@ -16,9 +17,7 @@ import java.time.LocalDate;
 public class EmployeeDTO {
 
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
     @NotBlank(message="Name should not be empty")
     @NotNull
     @Pattern(regexp = "^[A-Za-z ]+$",message = "Only alphabets and space allowed")
@@ -32,10 +31,12 @@ public class EmployeeDTO {
     private String profilePic;
     @NotBlank(message = "note cannot be empty")
     private String note;
-    @JsonFormat(pattern = "dd MM YYYY")
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @NotNull(message = "start date should not be empty")
     @PastOrPresent(message = "start date should be past or today!! Enter the date")
     private LocalDate startDate;
+    private List<String> departments;
 
 
 
