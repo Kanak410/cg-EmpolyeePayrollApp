@@ -12,5 +12,8 @@ public interface EmployeeServiceInterface {
     public EmployeePayrollData addEmployee(EmployeeDTO employeeDTO);
     ResponseEntity<String> deleteEmployee(long id);
     ResponseEntity<?> updateEmployeeSalary(long id, EmployeeDTO employeeDTO);
+    public List<EmployeePayrollData> getEmployessByDepartment(String department);
+
+
 
 }

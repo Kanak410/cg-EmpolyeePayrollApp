@@ -30,6 +30,10 @@ public class EmployeeRestController {
     public EmployeePayrollData getEmployee(@PathVariable long id) {
         return employeeService.getEmployee(id);
     }
+    @GetMapping("/dept/{departments}")
+    public List<EmployeePayrollData> getEmployees(@PathVariable String departments) {
+        return employeeService.getEmployessByDepartment(departments);
+    }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable long id) {
         return employeeService.deleteEmployee(id);
