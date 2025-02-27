@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+
 @Service
 public class EmployeeService implements EmployeeServiceInterface {
     @Autowired
@@ -20,7 +22,8 @@ public class EmployeeService implements EmployeeServiceInterface {
 
     @Override
     public Employee getEmployee(long id) {
-        return employeeRepository.findById(id).orElse(null);
+
+        return employeeRepository.findById(id).get();
     }
     @Override
     public Employee addEmployee(String name,String salary) {

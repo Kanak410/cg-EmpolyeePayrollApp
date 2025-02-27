@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -22,6 +23,12 @@ public class GlobalExceptionHandler {
         });
         return new ResponseEntity<Map<String,String>>(errors, HttpStatus.BAD_REQUEST);
 
+    }
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<Map<String,String>> handleNoSuchElementException(NoSuchElementException e){
+        Map<String,String> response = new HashMap<>();
+        response.put("Id not found in the database",e.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
     }
 
 }
