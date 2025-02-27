@@ -2,7 +2,7 @@ package com.bridgelabz.kanak.cgemployeepayrollapp.controller;
 
 
 import org.springframework.ui.Model;
-import com.bridgelabz.kanak.cgemployeepayrollapp.dto.Employee;
+import com.bridgelabz.kanak.cgemployeepayrollapp.dto.EmployeeDTO;
 import com.bridgelabz.kanak.cgemployeepayrollapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class EmployeeController {
     // Add Employee
     @PostMapping("/add")
     public String addEmployee(@RequestParam String name, @RequestParam String salary) {
-        Employee employee = new Employee(name, salary);
+        EmployeeDTO employee = new EmployeeDTO(name, salary);
         repository.save(employee);
         return "redirect:/employee";
     }

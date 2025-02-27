@@ -1,6 +1,6 @@
 package com.bridgelabz.kanak.cgemployeepayrollapp.service;
 
-import com.bridgelabz.kanak.cgemployeepayrollapp.dto.Employee;
+import com.bridgelabz.kanak.cgemployeepayrollapp.dto.EmployeeDTO;
 import com.bridgelabz.kanak.cgemployeepayrollapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,18 +16,18 @@ public class EmployeeService implements EmployeeServiceInterface {
     @Autowired
     private EmployeeRepository employeeRepository;
     @Override
-    public List<Employee> getEmployees(){
+    public List<EmployeeDTO> getEmployees(){
         return employeeRepository.findAll();
     }
 
     @Override
-    public Employee getEmployee(long id) {
+    public EmployeeDTO getEmployee(long id) {
 
         return employeeRepository.findById(id).get();
     }
     @Override
-    public Employee addEmployee(String name,String salary) {
-        return employeeRepository.save(new Employee(name,salary));
+    public EmployeeDTO addEmployee(String name, String salary) {
+        return employeeRepository.save(new EmployeeDTO(name,salary));
     }
     @Override
     public ResponseEntity<String> deleteEmployee(long id) {
@@ -39,8 +39,8 @@ public class EmployeeService implements EmployeeServiceInterface {
     }
 
     @Override
-    public Employee updateEmployeeSalary(Long id,String name, String salary){
-        Employee employee = employeeRepository.findById(id).get();
+    public EmployeeDTO updateEmployeeSalary(Long id, String name, String salary){
+        EmployeeDTO employee = employeeRepository.findById(id).get();
         if(employeeRepository.existsById(id)){
             employee.setSalary(salary);
             employee.setName(name);
